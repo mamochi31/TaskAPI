@@ -23,6 +23,12 @@ public class UserController {
         return userRepository.findAll();
     }
 
+    // 検索
+    @GetMapping("/search")
+    public List<User> searchUsers(@RequestParam String user_name) {
+        return userRepository.findByUserNameContaining(user_name);
+    }
+
     // 単一取得
     @GetMapping("/{id}")
     public ResponseEntity<User> getUser(@PathVariable Long id) {
